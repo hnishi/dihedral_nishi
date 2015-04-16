@@ -2,7 +2,8 @@
 
 using namespace std;
 
-int calc();  // calc() is empty func. (written in calc.cpp)
+int dihedralnishi( Inp_nishi );  // (written in dihedralnishi.cpp)
+
 
 int main(int argc, char *argv[]){
   cout<<"Version info. nlib v1.1.0 \n";
@@ -17,17 +18,19 @@ int main(int argc, char *argv[]){
 
 // INPUT_PARAMETERS
 Inp_nishi inp1( argv[1] );
+  
+  dihedralnishi(inp1);
 
 // CHECK OF pdb_nishi
 	//calc();  // nothing occur
-	pdb_nishi pdb1("../samp/4wfi_cano.pdb");
+	//pdb_nishi pdb1("../samp/4wfi_cano.pdb");
 	//pdb_nishi pdb1("../samp/1IGT.pdb");
 	//cout<<"search_n resi 3: " << pdb1.search_n(' ', 3) <<endl;
 	//pdb_nishi pdb1("3vg9_all_cut.pdb");
 	//pdb1.center_r();
 	//cout<<"comx_r[0] "<<pdb1.comx_r[0]<<endl;
 
-	pdb1.write_pdb("zzz.pdb");
+	//pdb1.write_pdb("zzz.pdb");
 	//pdb1.disp_line(pdb1.total_atom);
 /*	cout<<"test, rnum[5] = "<<pdb1.rnum[5]<<endl;
 	cout<<"TOTAL ATOM = "<<pdb1.rnum.size()<<endl;
