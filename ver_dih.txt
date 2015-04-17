@@ -1,0 +1,6 @@
+v1.0.0
+
+2015.4.17 v1.0.0
+  confirm dihedral_4 cpp ver. with Kusaka-san's in python
+  cpp -> dih = -68.0993
+  Kusaka-san -> dih = -68.055810947

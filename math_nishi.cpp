@@ -1,5 +1,6 @@
 #include"math_nishi.h"
 
+
 double rmsd(vector<double> &ax,vector<double> &ay,vector<double> &az,
 		vector<double> &bx,vector<double> &by,vector<double> &bz) // to calculate R.M.S.D.
 {

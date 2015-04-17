@@ -3,6 +3,9 @@
 #include<vector>
 using namespace std;
 
+// ####### COMMON CONSTANT VALUES #######
+#define PI 3.141592653589793
+
 /*#ifndef _INCLUDE_AVE_
 #define _INCLUDE_AVE_
         inline double ave(float *all, int i){         // to determine averagei
