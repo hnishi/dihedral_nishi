@@ -11,7 +11,7 @@ void tra_nishi::constructor( const char *codname, const char *pdbname, int n, st
 	ifstream ifs( codname, ios::in | ios::binary);//open file, codname
 
 	if(ifs.fail()){//error handling
-		cerr<<"cannot open file; "<<codname<<endl;
+		cerr<<"cannot open file: "<<codname<<endl;
 		exit(1);
 	}
 
