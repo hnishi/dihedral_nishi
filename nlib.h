@@ -88,7 +88,7 @@ public:
 	vector<int> loopnum,num15svw,num15hyd;
 	vector<double> sitime,cputime,totalE,kineticE,temp,potent,rmsf,rmsd;
 	vector<double> cordx,cordy,cordz,length_x,length_y,length_z;
-	unsigned int total_step, total_sel;
+	unsigned int total_step, total_sel; // total_* >= 1
 	pdb_nishi* pdb1;
 	string atom_sel;
 	string cod_name, pdb_name;
@@ -297,3 +297,6 @@ public:
 // select_atom() in tranishi.cpp
 int select_atom( pdb_nishi &pdb1, vector<double> &vec, string &atomsel, int i );
 int select_atom( pdb_nishi &pdb1, double x, double y, double z, vector<double> &vec, string &atomsel, int i );
+
+// search_sel in tranishi.cpp
+int search_sel( pdb_nishi &pdb1, string chai, int resn, string atmn, string atomsel);
