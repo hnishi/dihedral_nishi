@@ -432,6 +432,6 @@ int search_sel( pdb_nishi &pdb1, string chai, int resn, string atmn, string atom
   if(check1 > 1){
     cout<<"WARNING in tranishi.cpp: search_sel() detected more than 1 selected atom"<<endl; 
   }
-  cout<<"DEBUG: total_sel = "<<total_sel<<endl;
+  //cout<<"DEBUG: total_sel = "<<total_sel<<endl;
   return intra_num;
 }

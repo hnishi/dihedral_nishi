@@ -16,16 +16,6 @@ STARTFRAME  1
 # selection
 STARTCHAIN B  # space; white space " " can be set using keyword "space" 
 STARTRES  210  #1  # 210
-ENDCHAIN B  # space; white space " " can be set using keyword "space" 
-ENDRES 222  #234  # 222
 SELATOM heavy
 
 
-# :::::::::   PMF Calculation   :::::::::::::::::::::::::::::::::::::::
-PMFCALCULATION YES
-TEMPERATURE 300
-BINSIZE 1
-EMINIMUM -20
-NUMBIN 50
-
-OUTPMF out_pmf.dat

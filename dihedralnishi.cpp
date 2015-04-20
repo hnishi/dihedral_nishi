@@ -46,7 +46,7 @@ int dihedralnishi( Inp_nishi inp1 ){
  */
   //cout<<endl<<"REPORT> (2) specify the region \n";
   cout<<endl<<"--- RESIDUE RANGE --- \n";
-  char startchain = inp1.read("STARTCHAIN").c_str()[0];
+  string startchain = inp1.read("STARTCHAIN");
   //char endchain = inp1.read("ENDCHAIN").c_str()[0];
   int startres = atoi(inp1.read("STARTRES").c_str());
   //int endres = atoi(inp1.read("ENDRES").c_str());
@@ -67,22 +67,40 @@ int dihedralnishi( Inp_nishi inp1 ){
  * 
  */
 
- for( unsigned int n = startframe; n < tra1->total_step; n++){
+  vector<float> phi, psi; 
 
- }
-  Vector3f r1, r2, r3, r4; // initial value is (1, 0, 0)
-  //vec1 << 1.0, 1.0, 1.0;
-  r1 << 12.875,1.334,-17.76; 
-  r2 << 11.472,1.216,-15.718;  
-  r3 << 10.363,0.806,-14.818;  
-  r4 << 8.968,1.319,-15.257 ;
+  tra1->pdb1->write_pdb("zzz.pdb");
+  for( unsigned int n = startframe; n < tra1->total_step; n++){
+    Vector3f r1, r2, r3, r4; // initial value is (1, 0, 0)
 
-  float dih = dihedral_4(r1,r2,r3,r4);
+    int buf1;
+    buf1 = search_sel( *tra1->pdb1, startchain, startres, "C", selatom);
+    cout<<"buf1 = "<<buf1<<endl;
+    r1 << tra1->cordx[buf1], tra1->cordy[buf1], tra1->cordz[buf1];
 
-  cout<<"dih = "<<dih<<endl;
+    buf1 = search_sel( *tra1->pdb1, startchain, startres, "N", selatom);
+    r2 << tra1->cordx[buf1], tra1->cordy[buf1], tra1->cordz[buf1];
+    
+    buf1 = search_sel( *tra1->pdb1, startchain, startres, "CA", selatom);
+    r3 << tra1->cordx[buf1], tra1->cordy[buf1], tra1->cordz[buf1];
+    
+    buf1 = search_sel( *tra1->pdb1, startchain, startres, "C", selatom);
+    r4 << tra1->cordx[buf1], tra1->cordy[buf1], tra1->cordz[buf1];
 
+    //vec1 << 1.0, 1.0, 1.0;
+    /*r1 << 12.875,1.334,-17.76; 
+    r2 << 11.472,1.216,-15.718;  
+    r3 << 10.363,0.806,-14.818;  
+    r4 << 8.968,1.319,-15.257 ;
+    */
+    float dih = dihedral_4(r1,r2,r3,r4);
+
+    cout<<"dih = "<<dih<<endl;
+
+  }
   return 0;
 }
+
 
 float dihedral_4(Vector3f r1,Vector3f r2,Vector3f r3,Vector3f r4){
   Vector3f r12 = r2-r1, r23 = r3-r2, r34 = r4-r3;
