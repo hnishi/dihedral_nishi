@@ -415,3 +415,23 @@ int select_atom( pdb_nishi &pdb1, double x, double y, double z, vector<double> &
 int select_atom( pdb_nishi &pdb1, vector<double> &vec, string &atomsel, int i ){
    return select_atom( pdb1, pdb1.coox[i], pdb1.cooy[i], pdb1.cooz[i], vec, atomsel, i );
 }
+
+int search_sel( pdb_nishi &pdb1, string chai, int resn, string atmn, string atomsel){
+  int total_sel = 0, intra_num = -1, check1=0;
+  vector<double> vec;
+  for(unsigned int w=0; w < pdb1.total_atom; w++){
+    int rtrn = select_atom( pdb1, vec, atomsel, w );
+    if( rtrn == 0 ){
+      if( pdb1.chai[w] == chai && pdb1.rnum[w] == resn && pdb1.atmn[w] == atmn ){
+        intra_num = total_sel;
+        check1++;
+      }
+      total_sel++; 
+    }
+  }
+  if(check1 > 1){
+    cout<<"WARNING in tranishi.cpp: search_sel() detected more than 1 selected atom"<<endl; 
+  }
+  cout<<"DEBUG: total_sel = "<<total_sel<<endl;
+  return intra_num;
+}
