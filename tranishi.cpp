@@ -11,7 +11,7 @@ void tra_nishi::constructor( const char *codname, const char *pdbname, int n, st
 	ifstream ifs( codname, ios::in | ios::binary);//open file, codname
 
 	if(ifs.fail()){//error handling
-		cerr<<"cannot open file: "<<codname<<endl;
+		cerr<<"cannot open file; "<<codname<<endl;
 		exit(1);
 	}
 
@@ -422,6 +422,7 @@ int search_sel( pdb_nishi &pdb1, string chai, int resn, string atmn, string atom
   for(unsigned int w=0; w < pdb1.total_atom; w++){
     int rtrn = select_atom( pdb1, vec, atomsel, w );
     if( rtrn == 0 ){
+      //cout<<pdb1.chai[w]<<" "<<chai<<" "<<pdb1.rnum[w]<<" "<<resn<<" "<<pdb1.atmn[w]<<" "<<atmn<<endl;
       if( pdb1.chai[w] == chai && pdb1.rnum[w] == resn && pdb1.atmn[w] == atmn ){
         intra_num = total_sel;
         check1++;

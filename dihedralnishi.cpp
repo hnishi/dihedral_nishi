@@ -69,23 +69,24 @@ int dihedralnishi( Inp_nishi inp1 ){
 
   vector<float> phi, psi; 
 
-  tra1->pdb1->write_pdb("zzz.pdb");
+  //tra1->pdb1->write_pdb("zzz.pdb");
+  int buf1,buf2,buf3,buf4,buf5;
+  buf1 = search_sel( *tra1->pdb1, startchain, startres -1, "C", selatom);
+  buf2 = search_sel( *tra1->pdb1, startchain, startres, "N", selatom);
+  buf3 = search_sel( *tra1->pdb1, startchain, startres, "CA", selatom);
+  buf4 = search_sel( *tra1->pdb1, startchain, startres, "C", selatom);
+  buf5 = search_sel( *tra1->pdb1, startchain, startres +1, "N", selatom);
+  
   for( unsigned int n = startframe; n < tra1->total_step; n++){
-    Vector3f r1, r2, r3, r4; // initial value is (1, 0, 0)
+    Vector3f r1, r2, r3, r4, r5; // initial value is (1, 0, 0)
 
-    int buf1;
-    buf1 = search_sel( *tra1->pdb1, startchain, startres, "C", selatom);
-    cout<<"buf1 = "<<buf1<<endl;
-    r1 << tra1->cordx[buf1], tra1->cordy[buf1], tra1->cordz[buf1];
-
-    buf1 = search_sel( *tra1->pdb1, startchain, startres, "N", selatom);
-    r2 << tra1->cordx[buf1], tra1->cordy[buf1], tra1->cordz[buf1];
-    
-    buf1 = search_sel( *tra1->pdb1, startchain, startres, "CA", selatom);
-    r3 << tra1->cordx[buf1], tra1->cordy[buf1], tra1->cordz[buf1];
-    
-    buf1 = search_sel( *tra1->pdb1, startchain, startres, "C", selatom);
-    r4 << tra1->cordx[buf1], tra1->cordy[buf1], tra1->cordz[buf1];
+    //cout<<"search_sel( "<< startchain<<" "<<startres -1 <<" C"<<selatom<<"\n";
+    //cout<<"buf1 = "<<buf1<<endl;
+    r1 << tra1->cordx[n*tra1->total_sel+buf1], tra1->cordy[n*tra1->total_sel+buf1], tra1->cordz[n*tra1->total_sel+buf1];
+    r2 << tra1->cordx[n*tra1->total_sel+buf2], tra1->cordy[n*tra1->total_sel+buf2], tra1->cordz[n*tra1->total_sel+buf2];
+    r3 << tra1->cordx[n*tra1->total_sel+buf3], tra1->cordy[n*tra1->total_sel+buf3], tra1->cordz[n*tra1->total_sel+buf3];
+    r4 << tra1->cordx[n*tra1->total_sel+buf4], tra1->cordy[n*tra1->total_sel+buf4], tra1->cordz[n*tra1->total_sel+buf4];
+    r5 << tra1->cordx[n*tra1->total_sel+buf5], tra1->cordy[n*tra1->total_sel+buf5], tra1->cordz[n*tra1->total_sel+buf5];
 
     //vec1 << 1.0, 1.0, 1.0;
     /*r1 << 12.875,1.334,-17.76; 
@@ -93,11 +94,25 @@ int dihedralnishi( Inp_nishi inp1 ){
     r3 << 10.363,0.806,-14.818;  
     r4 << 8.968,1.319,-15.257 ;
     */
-    float dih = dihedral_4(r1,r2,r3,r4);
+    //float dih = dihedral_4(r1,r2,r3,r4);
+    phi.push_back( dihedral_4(r1,r2,r3,r4) );
+    psi.push_back( dihedral_4(r2,r3,r4,r5) );
 
-    cout<<"dih = "<<dih<<endl;
+    //cout<<"dih = "<<dih<<endl;
 
   }
+/*  output file
+*/
+  string outfile = inp1.read("OUTFILE").c_str();
+  ofstream ofs;
+  ofs.open( outfile.c_str() );
+  int frame = tra1->total_step - startframe;
+  for(int n=0;n<frame;n++){
+    ofs<<phi[n]<<"   "<<psi[n]<<"   "<<n+1<<endl;
+  }
+  ofs.close();
+  cout<<"output "<<outfile<<" (for graph) \n";
+
   return 0;
 }
 

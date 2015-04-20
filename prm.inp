@@ -7,15 +7,15 @@ COD1   /home/mobaxterm/Dropbox/Programing/baka/samp/for_rmsd/traj/md_small.crd
   #if you have two or more cod files than one, please cat (catenate) output-files after this program
 
 # output
-out_dih.dat
+OUTFILE out_dih.dat
 
 # trajectory settings
 STRIDE 1   # mabiki
 STARTFRAME  1
 
 # selection
-STARTCHAIN B  # space; white space " " can be set using keyword "space" 
-STARTRES  210  #1  # 210
+STARTCHAIN  B  # space; white space " " can be set using keyword "space" 
+STARTRES  218   # 210-222
 SELATOM heavy
 
 

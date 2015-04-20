@@ -52,6 +52,18 @@ pdb_nishi::pdb_nishi(const char *pdbname){
 
 	int i=0;
 	char buf2[9];
+		reco.clear();
+                anum.clear();
+                atmn.clear();
+                resn.clear();
+                chai.clear();
+		rnum.clear();
+                coox.clear();
+                cooy.clear();
+                cooz.clear();
+                occu.clear();
+                temf.clear();
+		elem.clear();
 	while( fgets(buf1,sizeof(buf1),fin)!=NULL ){
 		if( !((strncmp(buf1,"ATOM",4)==0) || (strncmp(buf1,"HETATM",6)==0) )){
 			continue;
@@ -78,7 +90,7 @@ pdb_nishi::pdb_nishi(const char *pdbname){
 		//else bfchai[0] = ' ';
 		strncpy(buf2, &buf1[21], 1); buf2[1]='\0';
 		//if(*buf2) cout<<buf2<<"ARUYO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-		sscanf(buf2,"%c",bfchai);
+		sscanf(buf2,"%s",bfchai);
 		//if(bfchai[0]=='\0') cout<<"NULL\n";
 		//else cout<<"bfchai= "<<bfchai<<"  ,endl\n";
 		//bfchai[1]=' ';
@@ -432,3 +444,4 @@ int pdb_nishi::center_r(){
 
 	return 0;
 }
+
