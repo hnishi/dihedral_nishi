@@ -6,7 +6,7 @@ int dihedralnishi( Inp_nishi );  // (written in dihedralnishi.cpp)
 
 
 int main(int argc, char *argv[]){
-  cout<<"Version info. dihedral_nishi v1.0.0 \n";
+  cout<<"Version info. dihedral_nishi v1.0.3 \n";
 // ##################### ARGUMENT HANDLING ##########################
 // argv[1]: input file
   if( argv[1]==NULL ){
