@@ -101,6 +101,7 @@ public:
 
 	int disp_line(int step); // display info. of step without coordinates
 	int write_cod(const char* filename, int stride);
+	int write_cod(const char* filename);
 	int write_step(const char* filename, int n); // write pdb at n step
 	int fix_step(const char *filename, int n,float fxcell,float fycell,float fzcell);
 	int fix_cod(float fxcell,float fycell,float fzcell);

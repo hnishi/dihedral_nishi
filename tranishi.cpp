@@ -225,7 +225,9 @@ int tra_nishi::write_cod(const char* filename,int stride){//output trajectory in
         fclose(fout);
         return 0;
 }
-
+int tra_nishi::write_cod(const char* filename){
+  return write_cod(filename, 1);
+}
 
 int tra_nishi::fix_step(const char *filename, int n,float fxcell,float fycell,float fzcell){//not yet implemented
 	
