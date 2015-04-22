@@ -62,8 +62,8 @@ int dihedralnishi( Inp_nishi inp1 ){
   buf4 = search_sel( *tra1->pdb1, startchain, startres, "C", selatom);
   buf5 = search_sel( *tra1->pdb1, startchain, startres +1, "N", selatom);
   
+  Vector3f r1, r2, r3, r4, r5; // initial value is (1, 0, 0)
   for( unsigned int n = startframe; n < tra1->total_step; n++){
-    Vector3f r1, r2, r3, r4, r5; // initial value is (1, 0, 0)
 
     //cout<<"search_sel( "<< startchain<<" "<<startres -1 <<" C"<<selatom<<"\n";
     //cout<<"buf1 = "<<buf1<<endl;
@@ -86,6 +86,22 @@ int dihedralnishi( Inp_nishi inp1 ){
     //cout<<"dih = "<<dih<<endl;
 
   }
+/*  calculate dihedral of reference pdb file and cout 
+*/
+  cout<<"calculate dihedral of reference pdb file and cout \n";
+  cout<<"please put these dihedral angles into output-file, if you want to see them in the same time.\n";
+  buf1 = search_sel( *tra1->pdb1, startchain, startres -1, "C", "all");
+  buf2 = search_sel( *tra1->pdb1, startchain, startres, "N", "all");
+  buf3 = search_sel( *tra1->pdb1, startchain, startres, "CA","all");
+  buf4 = search_sel( *tra1->pdb1, startchain, startres, "C", "all");
+  buf5 = search_sel( *tra1->pdb1, startchain, startres +1, "N", "all");
+  r1 << tra1->pdb1->coox[buf1], tra1->pdb1->cooy[buf1], tra1->pdb1->cooz[buf1];
+  r2 << tra1->pdb1->coox[buf2], tra1->pdb1->cooy[buf2], tra1->pdb1->cooz[buf2];
+  r3 << tra1->pdb1->coox[buf3], tra1->pdb1->cooy[buf3], tra1->pdb1->cooz[buf3];
+  r4 << tra1->pdb1->coox[buf4], tra1->pdb1->cooy[buf4], tra1->pdb1->cooz[buf4];
+  r5 << tra1->pdb1->coox[buf5], tra1->pdb1->cooy[buf5], tra1->pdb1->cooz[buf5];
+  cout<<"phi psi \n";
+  cout<<dihedral_4(r1,r2,r3,r4)<<" "<<dihedral_4(r2,r3,r4,r5)<<endl;
 /*  output file
 */
   string outfile = inp1.read("OUTFILE").c_str();

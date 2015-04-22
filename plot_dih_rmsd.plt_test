@@ -9,6 +9,8 @@ set ylabel "psi"
 
 set xrange[-180:180]
 set yrange[-180:180]
+#set zrange[0:3]
+#set cbrange[0:3]
 set xtics 45
 set ytics 45
 set grid
