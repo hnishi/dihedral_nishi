@@ -19,6 +19,6 @@ STARTFRAME  1
 # *** selection ***
 STARTCHAIN  B  # space; white space " " can be set using keyword "space" 
 STARTRES  __STARTRES__   # 210-222
-SELATOM all
+SELATOM all  
 
 

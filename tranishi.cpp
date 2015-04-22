@@ -86,6 +86,7 @@ void tra_nishi::constructor( const char *codname, const char *pdbname, int n, st
         //cout<<"loopdist= "<<loopdist<<endl;
         while( loopnum[total_step-1] != ( loopnum[total_step-2] + loopdist ) ){
                 total_step--;   // check whether total_step is wrong or correct
+		cout<<"WARNING: total_step was decreased because the final loop-number of a trajectory was not correctly read\n";
         }
 	//cout<<"!!!! total_step = "<<total_step<<endl;
         ifs.close();
