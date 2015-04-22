@@ -18,6 +18,6 @@ cat out_dih.dat | awk '{print $2}' > ccc
 #echo "file 'bbb', that includes rmsd values for all structures, should be prepared "
 cat $1 | awk '{print $2}' > bbb
 paste aaa ccc bbb > out_dih_rmsd.dat
-rm aaa bbb
+rm aaa bbb ccc
 echo "out_dih_rmsd.dat was output"
 
