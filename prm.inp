@@ -2,11 +2,11 @@
 
 # :::::::::   phi psi   :::::::::::::::::::::::::::
 # *** input ***
-#REFPDBNAME   /home/mobaxterm/Dropbox/Programing/baka/samp/for_rmsd/traj/crystal_1st.pdb
-#COD1   /home/mobaxterm/Dropbox/Programing/baka/samp/for_rmsd/traj/md_small.crd
+REFPDBNAME   /home/mobaxterm/Dropbox/Programing/baka/samp/for_rmsd/traj/crystal_1st.pdb
+COD1   /home/mobaxterm/Dropbox/Programing/baka/samp/for_rmsd/traj/md_small.crd
   #if you have two or more cod files than one, please cat (catenate) output-files after this program
-REFPDBNAME /work1/hnishi/3rdTrial/crystal.pdb 
-COD1 /work1/hnishi/3rdTrial/mcmd/md/md0_2/no3/md0.crd
+#REFPDBNAME /work1/hnishi/3rdTrial/crystal.pdb 
+#COD1 /work1/hnishi/3rdTrial/mcmd/md/md0_2/no3/md0.crd
 
 # *** output ***
 #OUTFILE out_dih.dat

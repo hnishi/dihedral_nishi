@@ -17,8 +17,10 @@ do
    #cd $dir/md$mdn/no$i
    echo residue $i ---------------------------------------
    sed "s/__STARTRES__/${i}/g" prm.inp |sed "s/__OUTFILE__/outs\/${i}.dat/g" > ${i}.inp
-   #./a.out ${i}.inp > outs/$i.out
+   ./a.out ${i}.inp > outs/$i.res
+   rm ${i}.inp
    sed "s/__STARTRES__/$i/g" plot_dih.plt > plot_${i}.plt
+   rm plot_${i}.plt
    cd $dir/outs
    gnuplot ../plot_$i.plt
    cd $dir

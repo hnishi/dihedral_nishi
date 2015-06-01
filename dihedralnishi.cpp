@@ -89,7 +89,7 @@ int dihedralnishi( Inp_nishi inp1 ){
 /*  calculate dihedral of reference pdb file and cout 
 */
   cout<<"calculate dihedral of reference pdb file and cout \n";
-  cout<<"please put these dihedral angles into output-file, if you want to see them in the same time.\n";
+  //cout<<"please put these dihedral angles into output-file, if you want to see them in the same time.\n";
   buf1 = search_sel( *tra1->pdb1, startchain, startres -1, "C", "all");
   buf2 = search_sel( *tra1->pdb1, startchain, startres, "N", "all");
   buf3 = search_sel( *tra1->pdb1, startchain, startres, "CA","all");
@@ -109,8 +109,10 @@ int dihedralnishi( Inp_nishi inp1 ){
   ofs.open( outfile.c_str() );
   int frame = tra1->total_step - startframe;
   for(int n=0;n<frame;n++){
-    ofs<<phi[n]<<"   "<<psi[n]<<"   "<<n+1<<endl;
+    //ofs<<phi[n]<<"   "<<psi[n]<<"   "<<n+1<<endl;
+    ofs<<phi[n]<<"   "<<psi[n]<<endl;
   }
+  ofs<<dihedral_4(r1,r2,r3,r4)<<"   "<<dihedral_4(r2,r3,r4,r5)<<endl;
   ofs.close();
   cout<<"output "<<outfile<<" (for graph) \n";
 
