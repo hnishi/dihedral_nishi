@@ -125,6 +125,8 @@ float dihedral_4(Vector3f r1,Vector3f r2,Vector3f r3,Vector3f r4){
   float sin = r12.dot(r23.cross(r34)) * r12.norm() / r12.cross(r23).norm() / r23.cross(r34).norm();
   float cos = r12.cross(r23).dot(r23.cross(r34)) / r12.cross(r23).norm() / r23.cross(r34).norm();
   float sign = sin / fabs(sin); //sign ( + or - ) of sin
+  if( cos >=  1 ) cos =  0.999999999 ;
+  if( cos <= -1 ) cos = -0.999999999 ;
   float t = sign * acos(cos); //torsion anglr t (tau) (rad)
   t = t * 180 / PI; //rad -> degree
 
